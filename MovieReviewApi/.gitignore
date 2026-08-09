@@ -1,0 +1,13 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.slnLaunch.user
+
+# .NET
+**/bin/
+**/obj/
+
+# Local configuration / secrets
+**/appsettings.json
+**/appsettings.Development.json

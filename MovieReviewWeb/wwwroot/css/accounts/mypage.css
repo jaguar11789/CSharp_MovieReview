@@ -1,0 +1,259 @@
+﻿body {
+    margin: 0;
+    background: radial-gradient( circle at top right, rgba(80, 80, 80, 0.18), transparent 35% ), #0b0b0d;
+    color: #f5f5f5;
+}
+/* 전체 */
+
+.mypage {
+    width: min(1000px, calc(100% - 40px));
+    margin: 0 auto;
+    padding: 70px 0 100px;
+}
+/* 상단 */
+
+.mypage-header {
+    margin-bottom: 35px;
+}
+
+.mypage-eyebrow, .section-eyebrow {
+    display: block;
+    margin-bottom: 8px;
+    color: #aaa;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.mypage-header h1 {
+    margin: 0;
+    font-size: 38px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+.mypage-header p {
+    margin: 12px 0 0;
+    color: #999;
+    font-size: 15px;
+}
+/* 프로필 */
+
+.profile-card {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+    padding: 30px;
+    margin-bottom: 22px;
+    border: 1px solid #29292d;
+    border-radius: 14px;
+    background: linear-gradient( 135deg, #18181c, #111114 );
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.25);
+}
+
+.profile-avatar {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: linear-gradient( 135deg, #444, #1e1e22 );
+    border: 1px solid #444;
+    font-size: 32px;
+    font-weight: 800;
+}
+
+.profile-name-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.profile-main h2 {
+    margin: 0;
+    font-size: 25px;
+    font-weight: 700;
+}
+
+.profile-main p {
+    margin: 7px 0;
+    color: #bbb;
+}
+
+.profile-id {
+    color: #777;
+    font-size: 13px;
+}
+/* Provider */
+
+.provider-badge {
+    padding: 5px 11px;
+    border-radius: 20px;
+    background: #29292e;
+    color: #ddd;
+    font-size: 11px;
+    font-weight: 700;
+}
+/* 공통 카드 */
+
+.info-card, .management-card {
+    padding: 30px;
+    margin-bottom: 22px;
+    border: 1px solid #29292d;
+    border-radius: 14px;
+    background: #121215;
+}
+
+.section-header {
+    margin-bottom: 25px;
+}
+
+    .section-header h2 {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+    }
+/* 정보 */
+
+.info-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1px;
+    overflow: hidden;
+    border: 1px solid #29292d;
+    border-radius: 10px;
+    background: #29292d;
+}
+
+.info-item {
+    min-height: 90px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 18px 20px;
+    background: #161619;
+}
+
+.info-label {
+    margin-bottom: 8px;
+    color: #777;
+    font-size: 12px;
+}
+
+.info-item strong {
+    color: #eee;
+    font-size: 14px;
+    font-weight: 500;
+    word-break: break-all;
+}
+
+.address-item {
+    grid-column: span 2;
+}
+/* 계정 관리 */
+
+.management-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.management-item {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 18px;
+    border: 1px solid #29292d;
+    border-radius: 10px;
+    background: #17171a;
+    color: #fff;
+    text-align: left;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.15s ease;
+}
+
+    .management-item:hover {
+        background: #1d1d21;
+        border-color: #444;
+        transform: translateY(-1px);
+    }
+
+.management-icon {
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    border-radius: 9px;
+    background: #252529;
+    color: #ddd;
+    font-size: 18px;
+}
+
+.management-text {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+    .management-text strong {
+        font-size: 14px;
+    }
+
+    .management-text span {
+        color: #777;
+        font-size: 12px;
+    }
+
+.management-arrow {
+    margin-left: auto;
+    color: #777;
+    font-size: 20px;
+    transition: transform 0.2s ease;
+}
+
+.management-item:hover .management-arrow {
+    transform: translateX(4px);
+    color: #fff;
+}
+/* 모바일 */
+
+@media (max-width: 768px) {
+    .mypage {
+        width: calc(100% - 25px);
+        padding-top: 40px;
+    }
+
+    .mypage-header h1 {
+        font-size: 30px;
+    }
+
+    .profile-card {
+        padding: 22px;
+    }
+
+    .profile-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 24px;
+    }
+
+    .profile-main h2 {
+        font-size: 20px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .address-item {
+        grid-column: span 1;
+    }
+
+    .info-item {
+        min-height: 75px;
+    }
+}

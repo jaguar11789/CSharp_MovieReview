@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>마이 페이지</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/accounts/mypage.css">
+</head>
+<body>
+    <div id="menu"></div>
+    <main class="mypage">
+        <section class="mypage-header">
+            <div>
+                <span class="mypage-eyebrow"> ACCOUNT </span>
+                <h1> 마이 페이지 </h1>
+                <p> 회원님의 계정 정보를 확인하고 관리할 수 있습니다. </p>
+            </div>
+        </section>
+        <!-- 프로필 영역 -->
+        <section class="profile-card">
+            <div class="profile-avatar">
+                <span id="avatarText">U</span>
+            </div> <div class="profile-main">
+                <div class="profile-name-row">
+                    <h2 id="userName"> - </h2>
+                    <span id="provider" class="provider-badge"> - </span>
+                </div> <p id="email"> - </p>
+                <span class="profile-id"> ID · <span id="userId">-</span></span>
+            </div>
+        </section>
+        <!-- 회원 정보 -->
+        <section class="info-card">
+            <div class="section-header">
+                <div>
+                    <span class="section-eyebrow"> PROFILE </span>
+                    <h2> 회원 정보 </h2>
+                </div>
+            </div>
+            <div class="info-grid">
+                <div class="info-item">
+                    <span class="info-label"> 이름 </span>
+                    <strong id="infoUserName"> - </strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"> 이메일 </span>
+                    <strong id="infoEmail"> - </strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"> 전화번호 </span>
+                    <strong id="phoneNumber"> - </strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"> 성별 </span>
+                    <strong id="gender"> - </strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"> 생년월일 </span>
+                    <strong id="birthDate"> - </strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"> 우편번호 </span>
+                    <strong id="zipCode"> - </strong>
+                </div>
+                <div class="info-item address-item">
+                    <span class="info-label"> 주소 </span>
+                    <strong>
+                        <span id="baseAddress">-</span>
+                        <span id="detailAddress"></span>
+                    </strong>
+                </div>
+                <div class="info-item">
+                    <span class="info-label"> 가입일 </span>
+                    <strong id="createdAt"> - </strong>
+                </div>
+            </div>
+        </section>
+        <!-- 계정 관리 -->
+        <section class="management-card">
+            <div class="section-header">
+                <div>
+                    <span class="section-eyebrow"> ACCOUNT SETTINGS </span>
+                    <h2> 계정 관리 </h2>
+                </div>
+            </div>
+            <div class="management-list">
+                <button type="button" class="management-item" onclick="goToUserUpdate()">
+                    <div class="management-icon"> ✎ </div>
+                    <div class="management-text">
+                        <strong> 회원정보 수정 </strong>
+                        <span> 이름, 연락처, 주소 등의 정보를 수정합니다. </span>
+                    </div>
+                    <span class="management-arrow"> → </span>
+                </button>
+                <button type="button" class="management-item" onclick="goToPasswordChange()">
+                    <div class="management-icon"> 🔒 </div>
+                    <div class="management-text">
+                        <strong> 비밀번호 변경 </strong>
+                        <span> 계정의 로그인 비밀번호를 변경합니다. </span>
+                    </div>
+                    <span class="management-arrow"> → </span>
+                </button>
+            </div>
+        </section> 
+    </main>
+
+
+    <!-- 공통 푸터 -->
+    <div id="footer"></div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/common.js"></script>
+    <script src="/js/accounts/mypage.js"></script>
+</body>
+</html>

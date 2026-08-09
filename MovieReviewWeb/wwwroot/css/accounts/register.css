@@ -1,0 +1,246 @@
+﻿/* ========================================
+   회원가입 - Movie Review Dark Theme
+======================================== */
+body {
+    background: #080808;
+    color: #ffffff;
+}
+
+
+/* ========================================
+   회원가입 영역
+======================================== */
+
+.register-container {
+    min-height: calc(100vh - 80px);
+    padding-top: 70px;
+    padding-bottom: 70px;
+}
+
+
+/* ========================================
+   회원가입 카드
+======================================== */
+
+.register-card {
+    width: 100%;
+    padding: 45px;
+    background: #111111;
+    border: 1px solid #292929;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+}
+
+
+/* ========================================
+   제목
+======================================== */
+
+.register-title {
+    margin: 0 0 35px;
+    text-align: center;
+    color: #ffffff;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: -1px;
+}
+
+
+/* ========================================
+   Form
+======================================== */
+
+.register-card .form-label {
+    color: #dddddd;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+/* 입력창 */
+
+.register-card .form-control,
+.register-card .form-select {
+    min-height: 48px;
+    background-color: #1b1b1b;
+    border: 1px solid #333333;
+    border-radius: 6px;
+    color: #ffffff;
+    transition: background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+
+    /* Placeholder */
+
+    .register-card .form-control::placeholder {
+        color: #777777;
+    }
+
+
+    /* Focus */
+
+    .register-card .form-control:focus,
+    .register-card .form-select:focus {
+        background-color: #202020;
+        border-color: #777777;
+        color: #ffffff;
+        box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.08);
+    }
+
+
+    /* Select */
+
+    .register-card .form-select option {
+        background: #1b1b1b;
+        color: #ffffff;
+    }
+
+
+/* Date */
+
+.register-card input[type="date"] {
+    color-scheme: dark;
+}
+
+
+/* ========================================
+   Input Group
+======================================== */
+
+.register-card .input-group .form-control {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+/* 중복확인 / 주소검색 */
+
+.register-card .btn-outline-secondary {
+    border-color: #444444;
+    background: #1b1b1b;
+    color: #cccccc;
+}
+
+
+    .register-card .btn-outline-secondary:hover {
+        border-color: #666666;
+        background: #292929;
+        color: #ffffff;
+    }
+
+
+/* ========================================
+   성공 / 실패 메시지
+======================================== */
+
+.register-card .text-success {
+    color: #62d88f !important;
+}
+
+
+.register-card .text-danger {
+    color: #ff6b6b !important;
+}
+
+
+/* ========================================
+   가입 / 취소 버튼
+======================================== */
+
+.register-card .d-flex {
+    margin-top: 35px !important;
+}
+
+
+.register-submit,
+.register-cancel {
+    min-height: 48px;
+    font-size: 14px;
+    font-weight: 700;
+    border-radius: 6px;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+
+/* 가입하기 */
+
+.register-submit {
+    border: none;
+    background: #ffffff;
+    color: #111111;
+}
+
+
+    .register-submit:hover {
+        background: #e6e6e6;
+        color: #111111;
+        transform: translateY(-2px);
+    }
+
+
+/* 취소 */
+
+.register-cancel {
+    border: 1px solid #444444;
+    background: #1b1b1b;
+    color: #cccccc;
+}
+
+
+    .register-cancel:hover {
+        background: #292929;
+        border-color: #666666;
+        color: #ffffff;
+        transform: translateY(-2px);
+    }
+
+
+/* ========================================
+   반응형
+======================================== */
+
+@media (max-width: 768px) {
+
+    .register-container {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+
+
+    .register-card {
+        padding: 35px 30px;
+    }
+
+
+    .register-title {
+        font-size: 28px;
+        margin-bottom: 30px;
+    }
+}
+
+
+@media (max-width: 576px) {
+
+    .register-container {
+        padding-top: 25px;
+        padding-bottom: 25px;
+    }
+
+
+    .register-card {
+        padding: 30px 20px;
+        border-radius: 8px;
+    }
+
+
+    .register-title {
+        font-size: 26px;
+        margin-bottom: 25px;
+    }
+
+
+    .register-card .d-flex {
+        flex-direction: column;
+        gap: 8px !important;
+    }
+}

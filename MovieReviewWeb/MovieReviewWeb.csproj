@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\accounts\register.html" />
+    <None Include="wwwroot\css\bootstrap.min.css" />
+    <None Include="wwwroot\image\kakao_login_medium_wide.png" />
+    <None Include="wwwroot\js\accounts\login.js" />
+    <None Include="wwwroot\js\accounts\register.js" />
+    <None Include="wwwroot\js\bootstrap.min.js" />
+    <None Include="wwwroot\js\common.js" />
+  </ItemGroup>
+
+</Project>

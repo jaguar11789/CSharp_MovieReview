@@ -1,0 +1,91 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>로그인 - Movie Review</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/accounts/login.css">
+</head>
+<body>
+    <main>
+        <div class="container">
+            <div class="row justify-content-center align-items-center min-vh-100">
+                <div class="col-12 col-sm-10 col-md-6 col-lg-4">
+                    <div class="login-card">
+                        <!-- 로고 -->
+                        <div class="text-center mb-4">
+                            <a href="/main" class="login-logo">MovieReview</a>
+                            <p class="login-subtitle">영화를 보고, 이야기를 남겨보세요.</p>
+                        </div>
+                        <form id="loginForm">
+                            <!-- 아이디 -->
+                            <div class="mb-3">
+                                <label for="userId" class="form-label">
+                                    아이디
+                                </label>
+                                <input type="text" class="form-control" id="userId" autocomplete="username" placeholder="아이디를 입력하세요." required>
+                            </div>
+                            <!-- 비밀번호 -->
+                            <div class="mb-3">
+                                <label for="password" class="form-label">비밀번호</label>
+
+                                <input type="password" class="form-control" id="password" autocomplete="current-password" placeholder="비밀번호를 입력하세요." required>
+                            </div>
+                            <!-- 로그인 -->
+                            <div class="d-grid mt-4">
+                                <button type="submit" class="btn login-submit">로그인</button>
+                            </div>
+                            <!-- 구분선 -->
+                            <div class="divider">
+                                <span>또는</span>
+                            </div>
+                            <!-- 카카오 -->
+                            <div class="d-grid mb-2">
+                                <button type="button" id="kakaoLoginBtn" class="kakao-login-btn">카카오로 로그인</button>
+                            </div>
+                            <!-- 네이버 -->
+                            <div class="d-grid mb-2">
+                                <button type="button" id="naverLoginBtn" class="naver-login-btn">네이버로 로그인</button>
+                            </div>
+                            <!-- 구글 -->
+                            <div class="d-grid">
+                                <button type="button" id="googleLoginBtn" class="google-login-btn">구글로 로그인</button>
+                            </div>
+                            <!-- 회원가입 -->
+                            <div class="text-center login-register">
+                                <span>아직 회원이 아니신가요?</span>
+                                <a href="/accounts/register.html">회원가입</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const returnUrl = new URLSearchParams(location.search).get("returnUrl") || "/index";
+
+        document.getElementById("kakaoLoginBtn").addEventListener("click", () => {
+
+            window.location.href = `https://localhost:7226/api/Auth/kakao/login?returnUrl=${encodeURIComponent(returnUrl)}`;
+        });
+
+        document.getElementById("naverLoginBtn").addEventListener("click", () => {
+
+            window.location.href = `https://localhost:7226/api/Auth/naver/login?returnUrl=${encodeURIComponent(returnUrl)}`;
+        });
+
+        document.getElementById("googleLoginBtn").addEventListener("click", () => {
+
+            window.location.href = `https://localhost:7226/api/Auth/google/login?returnUrl=${encodeURIComponent(returnUrl)}`;
+        });
+    </script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <!--<script src="/js/bootstrap.min.js"></script>-->
+    <script src="/js/common.js"></script>
+    <script src="/js/accounts/login.js"></script>
+
+</body>
+</html>

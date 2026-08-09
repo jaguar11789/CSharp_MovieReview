@@ -1,0 +1,44 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MovieReview</title>
+    <link rel="icon" href="/images/favicon.ico">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+
+<body>
+    <div id="menu"></div>
+    <main>
+        <!-- ========================================
+             대표 영화
+        ========================================= -->
+        <section id="featuredMovie"></section>
+        <!-- ========================================
+             인기 영화
+        ========================================= -->
+        <section class="movie-section">
+
+            <div class="section-title">
+                <div>
+                    <span class="section-label">TRENDING NOW</span>
+                    <h2>지금 가장 인기 있는 영화</h2>
+                </div>
+            </div>
+            <div class="movie-slider-wrapper">
+                <button type="button" class="slider-button slider-prev" id="popularPrev" aria-label="이전 영화">‹</button>
+                <div id="popularMovies" class="movie-slider"></div>
+                <button type="button" class="slider-button slider-next" id="popularNext" aria-label="다음 영화">›</button>
+            </div>
+        </section>
+    </main>
+    <div id="footer"></div>
+<script src="/js/bootstrap.bundle.min.js"></script>
+<!--<script src="/js/bootstrap.min.js"></script>-->
+<script src="/js/common.js"></script>
+<script src="/js/main.js"></script>
+</body>
+</html>
