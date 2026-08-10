@@ -3,16 +3,10 @@ using System.Text.Json;
 
 namespace MovieReviewApi.Services.Movies
 {
-    public class TMDBMoviesService : ITMDBMoviesService
+    public class TMDBMoviesService(HttpClient httpClient, IConfiguration configuration) : ITMDBMoviesService
     {
-        private readonly HttpClient     _httpClient;
-        private readonly IConfiguration _configuration;
-
-        public TMDBMoviesService(HttpClient httpClient, IConfiguration configuration)
-        {
-            _httpClient    = httpClient;
-            _configuration = configuration;
-        }
+        private readonly HttpClient     _httpClient    = httpClient;
+        private readonly IConfiguration _configuration = configuration;
 
         public async Task<TMDBMoviesResponse> GetPopularMoviesAsync()
         {

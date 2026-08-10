@@ -12,20 +12,12 @@ namespace MovieReviewApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class AuthController : ControllerBase
+    public class AuthController(IAuthService authService, IKakaoAuthService kakaoAuthService, INaverAuthService naverAuthService, IGoogleAuthService googleAuthService) : ControllerBase
     {
-        private readonly IAuthService       _authService;
-        private readonly IKakaoAuthService  _kakaoAuthService;
-        private readonly INaverAuthService  _naverAuthService;
-        private readonly IGoogleAuthService _googleAuthService;
-
-        public AuthController(IAuthService authService, IKakaoAuthService kakaoAuthService, INaverAuthService naverAuthService, IGoogleAuthService googleAuthService)
-        {
-            _authService       = authService;
-            _kakaoAuthService  = kakaoAuthService;
-            _naverAuthService  = naverAuthService;
-            _googleAuthService = googleAuthService;
-        }
+        private readonly IAuthService       _authService       = authService;
+        private readonly IKakaoAuthService  _kakaoAuthService  = kakaoAuthService;
+        private readonly INaverAuthService  _naverAuthService  = naverAuthService;
+        private readonly IGoogleAuthService _googleAuthService = googleAuthService;
 
         // 중복확인
         [HttpGet("check-userId")]

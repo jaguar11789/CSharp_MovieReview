@@ -7,14 +7,9 @@ namespace MovieReviewApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class MoviesController : ControllerBase
+    public class MoviesController(ITMDBMoviesService tmdbMoviesService) : ControllerBase
     {
-        private readonly ITMDBMoviesService _tmdbMoviesService;
-
-        public MoviesController(ITMDBMoviesService tmdbMoviesService)
-        {
-            _tmdbMoviesService = tmdbMoviesService;
-        }
+        private readonly ITMDBMoviesService _tmdbMoviesService = tmdbMoviesService;
 
         [HttpGet("popular")]
         public async Task<IActionResult> GetPopularMovies()

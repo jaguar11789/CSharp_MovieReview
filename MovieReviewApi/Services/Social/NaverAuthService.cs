@@ -11,32 +11,19 @@ using MovieReviewApi.External.OAuth.Naver;
 
 namespace MovieReviewApi.Services.Social
 {
-    public class NaverAuthService : INaverAuthService
+    public class NaverAuthService(HttpClient httpClient, AppDbContext context, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository,
+                                  IUserHistoryRepository userHistoryRepository, IUserSocialAccountRepository userSocialAccountRepository, IAuthService authService) : INaverAuthService
     {
-        private readonly HttpClient                    _httpClient;
-        private readonly AppDbContext                  _context;
-        private readonly IConfiguration                _configuration;
-        private readonly IHttpContextAccessor          _httpContextAccessor;
+        private readonly HttpClient                   _httpClient                  = httpClient;
+        private readonly AppDbContext                 _context                     = context;
+        private readonly IConfiguration               _configuration               = configuration;
+        private readonly IHttpContextAccessor         _httpContextAccessor         = httpContextAccessor;
 
-        private readonly IUserRepository               _userRepository;
-        private readonly IUserHistoryRepository        _userHistoryRepository;
-        private readonly IUserSocialAccountRepository  _userSocialAccountRepository;
+        private readonly IUserRepository              _userRepository              = userRepository;
+        private readonly IUserHistoryRepository       _userHistoryRepository       = userHistoryRepository;
+        private readonly IUserSocialAccountRepository _userSocialAccountRepository = userSocialAccountRepository;
 
-        private readonly IAuthService                  _authService;
-
-        public NaverAuthService(HttpClient httpClient, AppDbContext context, IConfiguration configuration, IHttpContextAccessor httpContextAccessor, IUserRepository userRepository,
-                                IUserHistoryRepository userHistoryRepository, IUserSocialAccountRepository userSocialAccountRepository, IAuthService authService)
-        {
-            _httpClient                  = httpClient;
-            _context                     = context;
-            _configuration               = configuration;
-            _httpContextAccessor         = httpContextAccessor;
-            _userRepository              = userRepository;
-
-            _userHistoryRepository       = userHistoryRepository;
-            _userSocialAccountRepository = userSocialAccountRepository;
-            _authService                 = authService;
-        }
+        private readonly IAuthService _authService = authService;
 
         public string GetLoginUrl(string returnUrl)
         {
