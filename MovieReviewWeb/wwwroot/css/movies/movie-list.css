@@ -1,0 +1,250 @@
+﻿/* ========================================
+   전체 영화 페이지
+======================================== */
+
+.movie-list-page {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 0 100px;
+}
+
+/* 페이지 제목 */
+
+.movie-list-header {
+    margin-bottom: 35px;
+}
+
+.movie-list-label {
+    display: block;
+    margin-bottom: 8px;
+    color: #777777;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+}
+
+.movie-list-title {
+    margin: 0;
+    font-size: 36px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+}
+
+
+/* ========================================
+   검색
+======================================== */
+
+.movie-search {
+    display: flex;
+    width: 100%;
+    max-width: 700px;
+    margin-bottom: 35px;
+}
+
+.movie-search input {
+    flex: 1;
+    height: 48px;
+    padding: 0 16px;
+    border: 1px solid #333333;
+    border-radius: 6px 0 0 6px;
+    background: #151515;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+    transition: border-color 0.2s ease;
+}
+
+.movie-search input::placeholder {
+    color: #666666;
+}
+
+.movie-search input:focus {
+    border-color: #666666;
+}
+
+.movie-search button {
+    width: 90px;
+    height: 48px;
+    border: none;
+    border-radius: 0 6px 6px 0;
+    background: #ffffff;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.2s ease;
+}
+
+.movie-search button:hover {
+    background: #e6e6e6;
+}
+
+
+/* ========================================
+   장르
+======================================== */
+
+.movie-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 40px;
+}
+
+.movie-genre-button {
+    padding: 9px 17px;
+    border: 1px solid #333333;
+    border-radius: 20px;
+    background: #111111;
+    color: #999999;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.movie-genre-button:hover {
+    border-color: #666666;
+    color: #ffffff;
+}
+
+.movie-genre-button.active {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #111111;
+}
+
+
+/* ========================================
+   영화 목록
+======================================== */
+
+.movie-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 40px 18px;
+}
+
+
+    /*
+ * 기존 movie-card 스타일과 충돌하지 않도록
+ * 전체 영화 페이지에서는 grid 안에서만 크기 지정
+ */
+
+.movie-grid .movie-card {
+    width: 100%;
+    min-width: 0;
+}
+
+.movie-grid .movie-card img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+}
+
+
+/* ========================================
+   페이지네이션
+======================================== */
+
+.movie-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 60px;
+}
+
+.movie-pagination button {
+    min-width: 38px;
+    height: 38px;
+    padding: 0 10px;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    background: #111111;
+    color: #999999;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.movie-pagination button:hover {
+    border-color: #666666;
+    color: #ffffff;
+}
+
+.movie-pagination button.active {
+    border-color: #ffffff;
+    background: #ffffff;
+    color: #111111;
+}
+
+.movie-pagination button:disabled {
+    opacity: 0.35;
+    cursor: default;
+}
+
+
+/* ========================================
+   모바일
+======================================== */
+
+@media (max-width: 1100px) {
+
+    .movie-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+@media (max-width: 900px) {
+
+    .movie-list-page {
+        width: 88%;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+@media (max-width: 650px) {
+
+    .movie-list-page {
+        width: 88%;
+        padding: 40px 0 70px;
+    }
+
+    .movie-list-title {
+        font-size: 28px;
+    }
+
+    .movie-search {
+        margin-bottom: 25px;
+    }
+
+    .movie-search input,
+    .movie-search button {
+        height: 44px;
+    }
+
+    .movie-search button {
+        width: 75px;
+    }
+
+    .movie-genres {
+        margin-bottom: 30px;
+    }
+
+    .movie-genre-button {
+        padding: 8px 13px;
+        font-size: 12px;
+    }
+
+    .movie-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /*gap: 30px 12px;*/
+    }
+}

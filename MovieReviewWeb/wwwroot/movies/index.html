@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>전체 영화</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/movies/movie-list.css">
+</head>
+<body>
+    <div id="menu"></div>
+    <main class="movie-list-page">
+
+        <div class="movie-list-header">
+            <span class="movie-list-label">MOVIES</span>
+            <h1 class="movie-list-title">전체 영화</h1>
+        </div>
+
+        <div class="movie-search">
+            <input type="text" id="movieSearchInput" placeholder="영화 제목을 검색하세요.">
+            <button type="button" id="movieSearchButton">검색</button>
+        </div>
+        <div class="movie-genres" id="movieGenres">
+            <!-- 장르 버튼 -->
+        </div>
+        <div id="movieList" class="movie-grid">
+            <!-- JS에서 영화 카드 생성 -->
+        </div>
+        <div id="moviePagination" class="movie-pagination">
+            <!-- 페이지 버튼 -->
+        </div>
+
+    </main>
+    <div id="footer"></div>
+    <script src="/js/movies/movie-list.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/common.js"></script>
+</body>
+</html>

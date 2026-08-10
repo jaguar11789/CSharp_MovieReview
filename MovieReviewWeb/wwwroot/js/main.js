@@ -5,17 +5,18 @@ document.addEventListener("DOMContentLoaded", async () => {
 });
 
 
-async function loadPopularMovies() {
+async function loadPopularMovies()
+{
 
     const featuredMovieContainer = document.getElementById("featuredMovie");
     const movieContainer         = document.getElementById("popularMovies");
 
     try {
-        const response = await fetch(`${ API_BASE_URL }/api/Movies/popular`);
+        const response = await fetch(`${API_BASE_URL}/api/Movies/popular`);
 
         if (!response.ok) {
             throw new Error(
-                `인기 영화 요청 실패: ${ response.status } `
+                `인기 영화 요청 실패: ${response.status} `
             );
         }
 
@@ -27,13 +28,13 @@ async function loadPopularMovies() {
         // 첫 번째 영화 → 대표 영화
         const featuredMovie = movieData.results[0];
 
-        renderFeaturedMovie( featuredMovieContainer, featuredMovie);
+        renderFeaturedMovie(featuredMovieContainer, featuredMovie);
         // 나머지 영화 → 인기 영화 목록
         renderPopularMovies(movieContainer, movieData.results.slice(1));
 
     }
-    catch (error) {
-
+    catch (error)
+    {
         console.error(error);
 
         featuredMovieContainer.innerHTML = `
@@ -49,11 +50,12 @@ async function loadPopularMovies() {
 }
 
 
-function renderFeaturedMovie(container, movie) {
+function renderFeaturedMovie(container, movie)
+{
 
-    const backdropUrl = movie.backdrop_path
-            ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
-            : `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
+const backdropUrl = movie.backdrop_path
+        ? `https://image.tmdb.org/t/p/original${movie.backdrop_path}`
+        : `https://image.tmdb.org/t/p/w1280${movie.poster_path}`;
 
 
 const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "";
@@ -80,16 +82,19 @@ container.innerHTML = `
         </div>`;
 }
 
-function goToMovieReview(movieId) {
+function goToMovieReview(movieId)
+{
     window.location.href = `/movies/reviews?movieId=${movieId}`;
 }
 
-function renderPopularMovies(container, movies) {
+function renderPopularMovies(container, movies)
+{
 
     container.innerHTML = "";
 
     movies.forEach(movie => {
         const movieCard = document.createElement("div");
+
         movieCard.className = "movie-card";
 
         const posterUrl = movie.poster_path ? `https://image.tmdb.org/t/p/w500${movie.poster_path}` : "/image/no-poster.png";
@@ -110,7 +115,8 @@ function renderPopularMovies(container, movies) {
     initializePopularSlider();
 }
 
-function goToMovie(movieId) {
+function goToMovie(movieId)
+{
 
     window.location.href = `/movies/detail?id=${movieId}`;
 }
@@ -118,25 +124,30 @@ function goToMovie(movieId) {
 let popularCurrentPage = 0;
 
 
-function initializePopularSlider() {
+function initializePopularSlider()
+{
 
     const slider     = document.getElementById("popularMovies");
     const prevButton = document.getElementById("popularPrev");
     const nextButton = document.getElementById("popularNext");
 
 
-    if (!slider || !prevButton || !nextButton) {
+    if (!slider || !prevButton || !nextButton)
+    {
         return;
     }
 
 
-    function getPageSize() {
+    function getPageSize()
+    {
 
-        if (window.innerWidth <= 650) {
+        if (window.innerWidth <= 650)
+        {
             return 2;
         }
 
-        if (window.innerWidth <= 1000) {
+        if (window.innerWidth <= 1000)
+        {
             return 4;
         }
 
@@ -144,7 +155,8 @@ function initializePopularSlider() {
     }
 
 
-    function updateButtons() {
+    function updateButtons()
+    {
 
         const maxScroll = slider.scrollWidth - slider.clientWidth;
 
@@ -153,12 +165,14 @@ function initializePopularSlider() {
     }
 
 
-    function moveNext() {
+    function moveNext()
+    {
 
         const pageSize = getPageSize();
         const cards    = slider.querySelectorAll(".movie-card");
 
-        if (cards.length === 0) {
+        if (cards.length === 0)
+        {
 
             return;
         }
@@ -186,12 +200,14 @@ function initializePopularSlider() {
         });
     }
 
-    function movePrevious() {
+    function movePrevious()
+    {
 
         const pageSize = getPageSize();
         const cards    = slider.querySelectorAll(".movie-card");
 
-        if (cards.length === 0) {
+        if (cards.length === 0)
+        {
             return;
         }
 

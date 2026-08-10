@@ -30,9 +30,9 @@ namespace MovieReviewApi.Controllers
 
         // 회원가입
         [HttpPost("register")]
-        public IActionResult Register(RegisterRequest request)
+        public async Task<IActionResult> Register(RegisterRequest request)
         {
-            var result = _authService.RegisterAsync(request);
+            var result = await _authService.RegisterAsync(request);
 
             return Ok(result);
             

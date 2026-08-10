@@ -25,7 +25,19 @@ app.MapFallback(async context =>
         context.Response.StatusCode = 404;
         return;
     }
-
+    // /movies ¡æ wwwroot/movies/index.html
+    var directoryIndexPath =
+        Path.Combine(
+            app.Environment.WebRootPath,
+            path,
+            "index.html"
+        );
+    if (File.Exists(directoryIndexPath))
+    {
+        context.Response.ContentType = "text/html; charset=utf-8";
+        await context.Response.SendFileAsync(directoryIndexPath);
+        return;
+    }
     // /login ¡æ wwwroot/login.html
     // /accounts/login ¡æ wwwroot/accounts/login.html
     var filePath = Path.Combine(app.Environment.WebRootPath, $"{path}.html");

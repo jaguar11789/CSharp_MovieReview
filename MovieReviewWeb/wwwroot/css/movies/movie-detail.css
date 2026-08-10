@@ -1,0 +1,346 @@
+﻿.movie-detail-page {
+    width: 90%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 45px 0 80px;
+}
+
+
+/* ========================================
+   영화 상세 정보
+======================================== */
+
+.movie-detail {
+    display: flex;
+    gap: 45px;
+    padding: 35px;
+    background: #151515;
+    border-radius: 10px;
+}
+
+
+/* 포스터 */
+
+.movie-detail-poster {
+    width: 300px;
+    height: 450px;
+    flex-shrink: 0;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.55);
+}
+
+
+/* 영화 정보 */
+
+.movie-detail-info {
+    padding-top: 5px;
+    max-width: 700px;
+}
+
+
+.movie-detail-title {
+    margin: 0 0 18px;
+    color: #ffffff;
+    font-size: 42px;
+    font-weight: 800;
+    letter-spacing: -1.5px;
+    line-height: 1.15;
+}
+
+
+/* 메타 */
+
+.movie-detail-meta {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-bottom: 22px;
+    color: #777777;
+    font-size: 13px;
+}
+
+
+.movie-detail-rating {
+    color: #ffd43b;
+    font-weight: 700;
+}
+
+
+/* 줄거리 */
+
+.movie-detail-overview {
+    margin: 0;
+    color: #c5c5c5;
+    font-size: 15px;
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   장르
+======================================== */
+
+.movie-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 22px;
+}
+
+
+.movie-genre {
+    padding: 6px 11px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 20px;
+    color: #aaa;
+    font-size: 12px;
+}
+
+
+/* ========================================
+   출연진
+======================================== */
+
+.cast-section {
+    margin-top: 55px;
+}
+
+
+.cast-section .section-title {
+    margin-bottom: 25px;
+}
+
+
+.cast-list {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 18px;
+}
+
+
+/* 배우 카드 */
+
+.cast-item {
+    overflow: hidden;
+    background: #151515;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+
+.cast-item:hover {
+    transform: translateY(-6px);
+    background: #202020;
+}
+
+
+/* 배우 사진 */
+
+.cast-item img {
+    width: 100%;
+    aspect-ratio: 2 / 3;
+    display: block;
+    object-fit: cover;
+}
+
+
+/* 배우 정보 */
+
+.cast-info {
+    padding: 11px 10px 13px;
+}
+
+
+.cast-name {
+    display: block;
+    margin-bottom: 5px;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+
+.cast-character {
+    display: block;
+    color: #777777;
+    font-size: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.movie-detail-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 18px;
+}
+
+.movie-detail-director {
+    margin-top: 14px;
+    color: #cccccc;
+    font-size: 14px;
+}
+
+.movie-detail-director .detail-label {
+    color: #777777;
+}
+
+.movie-detail-director strong {
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* ========================================
+   반응형 - 태블릿
+======================================== */
+
+@media (max-width: 1000px) {
+
+    .movie-detail {
+        gap: 30px;
+        padding: 30px;
+    }
+
+
+    .movie-detail-poster {
+        width: 230px;
+        height: 345px;
+    }
+
+
+    .movie-detail-title {
+        font-size: 35px;
+    }
+
+
+    .cast-list {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+
+/* ========================================
+   반응형 - 모바일
+======================================== */
+
+@media (max-width: 650px) {
+
+    .movie-detail-page {
+        width: 88%;
+        padding-top: 30px;
+    }
+
+
+    .movie-detail {
+        flex-direction: column;
+        gap: 25px;
+        padding: 22px;
+    }
+
+
+    .movie-detail-poster {
+        width: 180px;
+        height: 270px;
+        margin: 0 auto;
+    }
+
+
+    .movie-detail-info {
+        max-width: 100%;
+    }
+
+
+    .movie-detail-title {
+        font-size: 30px;
+    }
+
+
+    .movie-detail-meta {
+        gap: 12px;
+        margin-bottom: 17px;
+        font-size: 12px;
+    }
+
+
+    .movie-detail-overview {
+        font-size: 14px;
+        line-height: 1.7;
+    }
+
+
+    .cast-section {
+        margin-top: 40px;
+    }
+
+
+    .cast-list {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 12px;
+    }
+
+
+    .cast-info {
+        padding: 9px 8px 11px;
+    }
+
+
+    .cast-name {
+        font-size: 12px;
+    }
+
+
+    .cast-character {
+        font-size: 11px;
+    }
+}
+
+
+/* ========================================
+   반응형 - 작은 모바일
+======================================== */
+
+@media (max-width: 450px) {
+
+    .cast-list {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* ========================================
+   버튼 디자인
+======================================== */
+.cast-more-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.cast-more-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 140px;
+    min-height: 42px;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 6px;
+    background: transparent;
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+}
+
+.cast-more-button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.5);
+    transform: translateY(-2px);
+}
