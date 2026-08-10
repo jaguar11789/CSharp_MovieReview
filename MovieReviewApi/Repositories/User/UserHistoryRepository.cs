@@ -3,14 +3,9 @@ using MovieReviewApi.Models.Accounts.User;
 
 namespace MovieReviewApi.Repositories.User
 {
-    public class UserHistoryRepository : IUserHistoryRepository
+    public class UserHistoryRepository(AppDbContext context) : IUserHistoryRepository
     {
-        private readonly AppDbContext _context;
-        
-        public UserHistoryRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         public void Add(UserHistoryEntity userHistory)
         {

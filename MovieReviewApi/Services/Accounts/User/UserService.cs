@@ -7,22 +7,13 @@ using MovieReviewApi.Repositories.User;
 
 namespace MovieReviewApi.Services.Accounts.User
 {
-    public class UserService : IUserService
+    public class UserService(AppDbContext context, IUserRepository userRepository, IUserSocialAccountRepository userSocialAccountRepository, IUserHistoryRepository userHistoryRepository) : IUserService
     {
-        private readonly AppDbContext                 _context;
-        private readonly PasswordHasher<UserEntity>   _passwordHasher;
-        private readonly IUserRepository              _userRepository;
-        private readonly IUserSocialAccountRepository _userSocialAccountRepository;
-        private readonly IUserHistoryRepository       _userHistoryRepository;
-
-        public UserService(AppDbContext context, IUserRepository userRepository, IUserSocialAccountRepository userSocialAccountRepository, IUserHistoryRepository userHistoryRepository)
-        {
-            _context                     = context;
-            _passwordHasher              = new PasswordHasher<UserEntity>();
-            _userRepository              = userRepository;
-            _userSocialAccountRepository = userSocialAccountRepository;
-            _userHistoryRepository       = userHistoryRepository;
-        }
+        private readonly AppDbContext                 _context                     = context;
+        private readonly PasswordHasher<UserEntity>   _passwordHasher              = new();
+        private readonly IUserRepository              _userRepository              = userRepository;
+        private readonly IUserSocialAccountRepository _userSocialAccountRepository = userSocialAccountRepository;
+        private readonly IUserHistoryRepository       _userHistoryRepository       = userHistoryRepository;
 
         // 내 정보 조회
         public async Task<UserResponse?> GetMyPageAsync(long id)
@@ -51,7 +42,8 @@ namespace MovieReviewApi.Services.Accounts.User
                 DetailAddress = user.DetailAddress,
 
                 CreatedAt     = user.CreatedAt,
-                Provider      = socialAccount?.Provider
+                Provider      = socialAccount?.Provider,
+                EmailVerified = user.EmailVerified
             };
         }
 
@@ -73,6 +65,8 @@ namespace MovieReviewApi.Services.Accounts.User
 
             try
             {
+                var emailChanged = !string.Equals(user.Email, userUpdateRequest.Email, StringComparison.OrdinalIgnoreCase);
+
                 user.UserName      = userUpdateRequest.UserName;
                 user.Email         = userUpdateRequest.Email;
                 user.PhoneNumber   = userUpdateRequest.PhoneNumber;
@@ -83,6 +77,11 @@ namespace MovieReviewApi.Services.Accounts.User
                 user.BaseAddress   = userUpdateRequest.BaseAddress;
                 user.DetailAddress = userUpdateRequest.DetailAddress;
                 user.UpdatedAt     = DateTime.Now;
+
+                if (emailChanged)
+                {
+                    user.EmailVerified = false;
+                }
 
                 var history = new UserHistoryEntity
                 {

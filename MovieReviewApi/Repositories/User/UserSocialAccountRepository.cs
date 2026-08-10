@@ -4,14 +4,9 @@ using MovieReviewApi.Models.Accounts.User;
 
 namespace MovieReviewApi.Repositories.User
 {
-    public class UserSocialAccountRepository : IUserSocialAccountRepository
+    public class UserSocialAccountRepository(AppDbContext context) : IUserSocialAccountRepository
     {
-        private readonly AppDbContext _context;
-
-        public UserSocialAccountRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         public async Task<UserSocialAccountEntity?> FindByProviderUserIdAsync(string provider, string providerUserId)
         {

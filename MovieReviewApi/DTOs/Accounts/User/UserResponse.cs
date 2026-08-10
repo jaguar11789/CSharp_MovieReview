@@ -18,5 +18,6 @@
         public string?   Gender        { get; set; }
         public DateTime  UpdatedAt     { get; set; }
         public string?   Provider      { get; set; }
+        public bool      EmailVerified { get; set; }
     }
 }

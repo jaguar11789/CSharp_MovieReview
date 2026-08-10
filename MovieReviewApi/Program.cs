@@ -4,6 +4,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MovieReviewApi.Data;
 using MovieReviewApi.Repositories.User;
+using MovieReviewApi.Services.Accounts.Email;
 using MovieReviewApi.Services.Accounts.User;
 using MovieReviewApi.Services.Auth;
 using MovieReviewApi.Services.Movies;
@@ -70,9 +71,12 @@ builder.Services.AddSession(options =>
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserHistoryRepository, UserHistoryRepository>();
 builder.Services.AddScoped<IUserSocialAccountRepository, UserSocialAccountRepository>();
+builder.Services.AddScoped<IEmailVerificationRepository, EmailVerificationRepository>();
 
 builder.Services.AddScoped<IAuthService, AuthService>();
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 
 builder.Services.AddHttpClient<IKakaoAuthService,KakaoAuthService>();
 builder.Services.AddHttpClient<INaverAuthService, NaverAuthService>();

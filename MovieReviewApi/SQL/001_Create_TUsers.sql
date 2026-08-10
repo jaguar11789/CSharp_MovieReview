@@ -7,7 +7,7 @@ CREATE TABLE TUsers
     Id              BIGINT IDENTITY(1,1) PRIMARY KEY,
     UserId          NVARCHAR(50)  NOT NULL,
     PasswordHash    NVARCHAR(255) NULL,
-    UserName        NVARCHAR(50)  NOT NULL,
+    UserName        NVARCHAR(50)  NULL,
     Email           NVARCHAR(255) NULL,
 
     PhoneNumber     NVARCHAR(20)  NULL,

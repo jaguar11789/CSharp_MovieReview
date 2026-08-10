@@ -5,14 +5,9 @@ using System.Threading.Tasks;
 
 namespace MovieReviewApi.Repositories.User
 {
-    public class UserRepository : IUserRepository
+    public class UserRepository(AppDbContext context) : IUserRepository
     {
-        private readonly AppDbContext _context;
-        
-        public UserRepository(AppDbContext context)
-        {
-            _context = context;
-        }
+        private readonly AppDbContext _context = context;
 
         // 해당 UserId 가진 사용자 존재하는지 확인 true, false 반환
         public async Task<bool> ExistsByUserIdAsync(string userId)

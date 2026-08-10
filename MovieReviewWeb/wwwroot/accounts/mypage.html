@@ -46,7 +46,11 @@
                 </div>
                 <div class="info-item">
                     <span class="info-label"> 이메일 </span>
-                    <strong id="infoEmail"> - </strong>
+                    <div class="email-info">
+                        <strong id="infoEmail">-</strong>
+                        <span id="emailVerified">-</span>
+                        <button type="button" id="emailVerifyButton">이메일 인증</button>
+                    </div>
                 </div>
                 <div class="info-item">
                     <span class="info-label"> 전화번호 </span>
@@ -103,9 +107,24 @@
                     <span class="management-arrow"> → </span>
                 </button>
             </div>
-        </section> 
+        </section>
     </main>
-
+    <!-- 이메일 인증 모달 -->
+    <div id="emailVerifyModal" class="email-verify-modal">
+        <div class="email-verify-modal-content">
+            <div class="email-verify-modal-header">
+            <h3>이메일 인증</h3>
+            <button type="button" id="emailVerifyCloseButton" class="email-verify-close"> × </button>
+            </div>
+                <p class="email-verify-description">
+                    <strong id="verifyEmailAddress">-</strong> 으로 인증번호를 전송했습니다.
+                </p> <div class="email-code-input">
+                <input type="text" id="verificationCode" maxlength="6" inputmode="numeric" placeholder="인증번호 6자리">
+                <button type="button" id="emailVerifyConfirmButton"> 인증하기 </button>
+            </div>
+            <p class="email-verify-guide"> 인증번호는 5분 동안 유효합니다. </p>
+        </div>
+    </div>
 
     <!-- 공통 푸터 -->
     <div id="footer"></div>

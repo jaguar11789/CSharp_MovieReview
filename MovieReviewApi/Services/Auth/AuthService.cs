@@ -13,22 +13,13 @@ using System.Threading.Tasks;
 
 namespace MovieReviewApi.Services.Auth
 {
-    public class AuthService : IAuthService
+    public class AuthService(AppDbContext context, IUserRepository userRepository, IUserHistoryRepository userHistoryRepository, IConfiguration configuration) : IAuthService
     {
-        private readonly AppDbContext                _context;
-        private readonly IUserRepository             _userRepository;
-        private readonly IUserHistoryRepository      _userHistoryRepository;
-        private readonly PasswordHasher<UserEntity>  _passwordHasher;
-        private readonly IConfiguration              _configuration;
-
-        public AuthService(AppDbContext context, IUserRepository userRepository, IUserHistoryRepository userHistoryRepository,IConfiguration configuration)
-        {
-            _context               = context;
-            _userRepository        = userRepository;
-            _userHistoryRepository = userHistoryRepository;
-            _passwordHasher        = new PasswordHasher<UserEntity>();
-            _configuration         = configuration;
-        }
+        private readonly AppDbContext               _context               = context;
+        private readonly PasswordHasher<UserEntity> _passwordHasher        = new();
+        private readonly IUserRepository            _userRepository        = userRepository;
+        private readonly IUserHistoryRepository     _userHistoryRepository = userHistoryRepository;
+        private readonly IConfiguration             _configuration         = configuration;
 
         // 중복확인
         public async Task<bool> CheckUserIdAsync(string userId)
