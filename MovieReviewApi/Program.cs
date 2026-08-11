@@ -9,6 +9,7 @@ using MovieReviewApi.Services.Accounts.User;
 using MovieReviewApi.Services.Auth;
 using MovieReviewApi.Services.Movies;
 using MovieReviewApi.Services.Social;
+using MovieReviewApi.Services.TV;
 using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -83,6 +84,7 @@ builder.Services.AddHttpClient<INaverAuthService, NaverAuthService>();
 builder.Services.AddHttpClient<IGoogleAuthService, GoogleAuthService>();
 
 builder.Services.AddHttpClient<ITMDBMoviesService, TMDBMoviesService>();
+builder.Services.AddHttpClient<ITMDBTvService, TMDBTvService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -33,18 +33,18 @@ body {
 }
 
 
-    /* 하단 페이드 */
+/* 하단 페이드 */
 
-    .featured-movie::after {
-        content: "";
-        position: absolute;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        height: 220px;
-        background: linear-gradient( to bottom, transparent, #080808 );
-        pointer-events: none;
-    }
+.featured-movie::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 220px;
+    background: linear-gradient( to bottom, transparent, #080808 );
+    pointer-events: none;
+}
 
 
 .featured-content {
@@ -74,14 +74,14 @@ body {
 }
 
 
-    .featured-info h1 {
-        margin: 0 0 18px;
-        font-size: clamp(40px, 5vw, 72px);
-        font-weight: 900;
-        line-height: 1.05;
-        letter-spacing: -2px;
-        text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
-    }
+.featured-info h1 {
+    margin: 0 0 18px;
+    font-size: clamp(40px, 5vw, 72px);
+    font-weight: 900;
+    line-height: 1.05;
+    letter-spacing: -2px;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.7);
+}
 
 
 /* 영화 메타 정보 */
@@ -96,10 +96,10 @@ body {
 }
 
 
-    .featured-meta span:first-child {
-        color: #ffd43b;
-        font-weight: 700;
-    }
+.featured-meta span:first-child {
+    color: #ffd43b;
+    font-weight: 700;
+}
 
 
 /* 영화 줄거리 */
@@ -154,10 +154,10 @@ body {
 }
 
 
-    .featured-button:hover {
-        background: #e6e6e6;
-        transform: translateY(-2px);
-    }
+.featured-button:hover {
+    background: #e6e6e6;
+    transform: translateY(-2px);
+}
 
 
 /* 리뷰 보기 */
@@ -171,12 +171,12 @@ body {
 }
 
 
-    .review-button:hover {
-        background: rgba(255, 255, 255, 0.15);
-        border-color: rgba(255, 255, 255, 0.7);
-        color: #ffffff;
-        transform: translateY(-2px);
-    }
+.review-button:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: rgba(255, 255, 255, 0.7);
+    color: #ffffff;
+    transform: translateY(-2px);
+}
 
 
 /* ========================================
@@ -227,9 +227,9 @@ body {
 }
 
 
-    .more-button:hover {
-        color: #ffffff;
-    }
+.more-button:hover {
+    color: #ffffff;
+}
 
 
 /* ========================================
@@ -260,9 +260,9 @@ body {
 }
 
 
-    .movie-slider::-webkit-scrollbar {
-        display: none;
-    }
+.movie-slider::-webkit-scrollbar {
+    display: none;
+}
 
 
 .movie-card {
@@ -274,25 +274,25 @@ body {
 }
 
 
-    .movie-card:hover {
-        transform: translateY(-8px);
-    }
+.movie-card:hover {
+    transform: translateY(-8px);
+}
 
 
-    .movie-card img {
-        width: 190px;
-        height: 285px;
-        object-fit: cover;
-        display: block;
-        border-radius: 8px;
-        box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-        transition: box-shadow 0.3s ease;
-    }
+.movie-card img {
+    width: 190px;
+    height: 285px;
+    object-fit: cover;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease;
+}
 
 
-    .movie-card:hover img {
-        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
-    }
+.movie-card:hover img {
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.7);
+}
 
 
 .movie-info {
@@ -300,14 +300,14 @@ body {
 }
 
 
-    .movie-info h3 {
-        margin: 0 0 7px;
-        font-size: 15px;
-        font-weight: 600;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.movie-info h3 {
+    margin: 0 0 7px;
+    font-size: 15px;
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 
 .movie-rating {
@@ -451,9 +451,9 @@ body {
     }
 
 
-        .featured-info h1 {
-            font-size: 42px;
-        }
+    .featured-info h1 {
+        font-size: 42px;
+    }
 
 
     .featured-meta {

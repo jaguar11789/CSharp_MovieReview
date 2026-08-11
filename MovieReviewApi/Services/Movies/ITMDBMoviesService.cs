@@ -1,4 +1,5 @@
-﻿using MovieReviewApi.External.TMDB;
+﻿using MovieReviewApi.DTOs.Movies;
+using MovieReviewApi.External.TMDB;
 
 namespace MovieReviewApi.Services.Movies
 {
@@ -6,9 +7,11 @@ namespace MovieReviewApi.Services.Movies
     {
         Task<TMDBMoviesResponse> GetPopularMoviesAsync();
 
-        Task<TMDBMoviesResponse> GetMoviesAsync(int page = 1);
+        Task<MoviesPageResponse> GetMoviesAsync(int page = 1);
 
-        Task<TMDBMoviesResponse> SearchMoviesAsync(string query, int page);
+        Task<MoviesPageResponse> SearchMoviesAsync(string query, int page);
+
+        Task<MoviesPageResponse> GetMoviesByGenreAsync(int genreId, int page = 1);
 
         Task<TMDBMovie> GetMovieDetailAsync(long movieId);
     }

@@ -12,10 +12,12 @@
         return;
     }
 
-    try {
+    try
+    {
         const response = await fetch(`https://localhost:7226/api/Movies/${movieId}`);
 
-        if (!response.ok) {
+        if (!response.ok)
+        {
             throw new Error(`영화 상세 정보 요청 실패 : ${response.status}`);
         }
 
@@ -67,7 +69,8 @@
 });
 
 function renderCast(cast, showAll = false) {
-    const credits = document.getElementById("cast-list");
+
+    const credits    = document.getElementById("cast-list");
     const moreButton = document.getElementById("castMoreButton");
 
     const displayCast = showAll ? cast : cast.slice(0, 6);

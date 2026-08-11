@@ -248,3 +248,39 @@
         /*gap: 30px 12px;*/
     }
 }
+
+/* ========================================
+   장르
+======================================== */
+
+.movie-genres {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 25px;
+    margin-bottom: 35px;
+}
+
+.genre-button {
+    padding: 9px 17px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 20px;
+    background: transparent;
+    color: #999999;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease;
+}
+
+.genre-button:hover {
+    border-color: rgba(255, 255, 255, 0.5);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+.genre-button.active {
+    background: #ffffff;
+    border-color: #ffffff;
+    color: #111111;
+}

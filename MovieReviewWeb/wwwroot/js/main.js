@@ -1,29 +1,40 @@
 ﻿const API_BASE_URL = "https://localhost:7226";
 
 document.addEventListener("DOMContentLoaded", async () => {
-    await loadPopularMovies();
+    await loadPopularMoviesAndTvs();
 });
 
 
-async function loadPopularMovies()
+async function loadPopularMoviesAndTvs()
 {
 
     const featuredMovieContainer = document.getElementById("featuredMovie");
     const movieContainer         = document.getElementById("popularMovies");
+    const tvContainer            = document.getElementById("popularTv");
 
     try {
-        const response = await fetch(`${API_BASE_URL}/api/Movies/popular`);
+        const movieResponse = await fetch(`${API_BASE_URL}/api/Movies/popular`);
+        const tvResponse    = await fetch(`${API_BASE_URL}/api/Tvs/popular`);
 
-        if (!response.ok) {
-            throw new Error(
-                `인기 영화 요청 실패: ${response.status} `
-            );
+        if (!movieResponse.ok)
+        {
+            throw new Error(`인기 영화 요청 실패: ${movieResponse.status} `);
         }
 
-        const movieData = await response.json();
+        if (!tvResponse.ok) {
+            throw new Error(`인기 TV 프로그램 요청 실패: ${tvResponse.status} `);
+        }
 
-        if (!movieData.results?.length) {
+        const movieData = await movieResponse.json();
+        const tvData    = await tvResponse.json();
+
+        if (!movieData.results?.length)
+        {
             throw new Error("영화 데이터가 없습니다.");
+        }
+        if (!tvData.results?.length)
+        {
+            throw new Error("TV 프로그램 데이터가 없습니다.");
         }
         // 첫 번째 영화 → 대표 영화
         const featuredMovie = movieData.results[0];
@@ -31,21 +42,31 @@ async function loadPopularMovies()
         renderFeaturedMovie(featuredMovieContainer, featuredMovie);
         // 나머지 영화 → 인기 영화 목록
         renderPopularMovies(movieContainer, movieData.results.slice(1));
+        renderPopularTvs(tvContainer, tvData.results);
 
+        console.log(tvData)
     }
     catch (error)
     {
         console.error(error);
 
         featuredMovieContainer.innerHTML = `
-            < div class="movie-error" >
-                대표 영화 정보를 불러오지 못했습니다.
-            </div >`;
+                                            <div class="movie-error">
+                                                대표 영화 정보를 불러오지 못했습니다.
+                                            </div >
+                                           `;
 
-                movieContainer.innerHTML = `
-            < div class="movie-error" >
-                인기 영화 정보를 불러오지 못했습니다.
-            </div >`;
+        movieContainer.innerHTML = `
+                                    <div class="movie-error">
+                                        인기 영화 정보를 불러오지 못했습니다.
+                                    </div >
+                                   `;
+
+        tvContainer.innerHTML = `
+                                <div class="movie-error">
+                                    인기 TV 프로그램 정보를 불러오지 못했습니다.
+                                </div>
+                                `;
     }
 }
 
@@ -93,6 +114,7 @@ function renderPopularMovies(container, movies)
     container.innerHTML = "";
 
     movies.forEach(movie => {
+
         const movieCard = document.createElement("div");
 
         movieCard.className = "movie-card";
@@ -115,15 +137,43 @@ function renderPopularMovies(container, movies)
     initializePopularSlider();
 }
 
-function goToMovie(movieId)
+function renderPopularTvs(container, tvs)
 {
+    container.innerHTML = "";
 
-    window.location.href = `/movies/detail?id=${movieId}`;
+    tvs.forEach(tv => {
+        const tvCard = document.createElement("div");
+
+        tvCard.className = "movie-card";
+
+        const posterUrl = tv.poster_path ? `https://image.tmdb.org/t/p/w500${tv.poster_path}` : "/image/no-poster.png";
+
+        tvCard.innerHTML = `
+            <img src="${posterUrl}" alt="${tv.name}">
+
+            <div class="movie-info">
+                <h3>${tv.name}</h3>
+                <span class="movie-rating">★ ${Number(tv.vote_average).toFixed(1)}</span>
+                <span class="movie-date">${tv.release_date || ""}</span>
+            </div>`;
+
+        tvCard.addEventListener("click", () => goToTv(tv.id));
+        container.appendChild(tvCard);
+    });
+    initializePopularTvSlider();
 }
 
+function goToMovie(movieId)
+{
+    window.location.href = `/movies/detail?id=${movieId}`;
+}
+function goToTv(tvId) {
+
+    window.location.href = `/tvs/detail?id=${tvId}`;
+}
 let popularCurrentPage = 0;
 
-
+// 영화 슬라이더
 function initializePopularSlider()
 {
 
@@ -229,6 +279,131 @@ function initializePopularSlider()
 
     slider.addEventListener("scroll", updateButtons);
     window.addEventListener("resize", updateButtons);
+
+    updateButtons();
+}
+
+// TV 슬라이더
+function initializePopularTvSlider() {
+    const slider =
+        document.getElementById("popularTv");
+
+    const prevButton =
+        document.getElementById("popularTvPrev");
+
+    const nextButton =
+        document.getElementById("popularTvNext");
+
+    if (!slider || !prevButton || !nextButton) {
+        return;
+    }
+
+    function getPageSize() {
+        if (window.innerWidth <= 650) {
+            return 2;
+        }
+
+        if (window.innerWidth <= 1000) {
+            return 4;
+        }
+
+        return 5;
+    }
+
+    function updateButtons() {
+        const maxScroll =
+            slider.scrollWidth - slider.clientWidth;
+
+        prevButton.disabled =
+            slider.scrollLeft <= 0;
+
+        nextButton.disabled =
+            slider.scrollLeft >= maxScroll - 2;
+    }
+
+    function moveNext() {
+        const pageSize = getPageSize();
+
+        const cards =
+            slider.querySelectorAll(".movie-card");
+
+        if (cards.length === 0) {
+            return;
+        }
+
+        const cardWidth =
+            cards[0].offsetWidth;
+
+        const style =
+            window.getComputedStyle(slider);
+
+        const gap =
+            parseFloat(style.gap) || 0;
+
+        const moveDistance =
+            (cardWidth + gap) * pageSize;
+
+        const maxScroll =
+            slider.scrollWidth - slider.clientWidth;
+
+        const nextPosition =
+            Math.min(
+                slider.scrollLeft + moveDistance,
+                maxScroll
+            );
+
+        slider.scrollTo({
+            left: nextPosition,
+            behavior: "smooth"
+        });
+    }
+
+    function movePrevious() {
+        const pageSize = getPageSize();
+
+        const cards =
+            slider.querySelectorAll(".movie-card");
+
+        if (cards.length === 0) {
+            return;
+        }
+
+        const cardWidth =
+            cards[0].offsetWidth;
+
+        const style =
+            window.getComputedStyle(slider);
+
+        const gap =
+            parseFloat(style.gap) || 0;
+
+        const moveDistance =
+            (cardWidth + gap) * pageSize;
+
+        const previousPosition =
+            Math.max(
+                slider.scrollLeft - moveDistance,
+                0
+            );
+
+        slider.scrollTo({
+            left: previousPosition,
+            behavior: "smooth"
+        });
+    }
+
+    prevButton.onclick = movePrevious;
+    nextButton.onclick = moveNext;
+
+    slider.addEventListener(
+        "scroll",
+        updateButtons
+    );
+
+    window.addEventListener(
+        "resize",
+        updateButtons
+    );
 
     updateButtons();
 }
