@@ -20,11 +20,10 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowWeb", policy =>
     {
-        policy
-            .WithOrigins("https://localhost:7185")
-            .AllowAnyHeader()
-            .AllowAnyMethod()
-            .AllowCredentials(); // <-- 쿠키 주고받음
+        policy.WithOrigins("https://localhost:7185")
+              .AllowAnyHeader()
+              .AllowAnyMethod()
+              .AllowCredentials(); // <-- 쿠키 주고받음
     });
 });
 builder.Services.AddControllers();
@@ -40,18 +39,13 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme).AddJw
             ValidIssuer   = builder.Configuration["Jwt:Issuer"],
             ValidAudience = builder.Configuration["Jwt:Audience"],
 
-            IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(
-                    builder.Configuration["Jwt:Key"]!
-                )
-            )
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(builder.Configuration["Jwt:Key"]!))
         };
         options.Events = new JwtBearerEvents
         {
             OnMessageReceived = context =>
             {
-                context.Token =
-                    context.Request.Cookies["accessToken"];
+                context.Token = context.Request.Cookies["accessToken"];
 
                 return Task.CompletedTask;
             }
@@ -64,27 +58,27 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.Cookie.HttpOnly = true;
+    options.Cookie.HttpOnly    = true;
     options.Cookie.IsEssential = true;
 });
 
 // builder.Services.AddScoped<UserRepository>();
-builder.Services.AddScoped<IUserRepository, UserRepository>();
-builder.Services.AddScoped<IUserHistoryRepository, UserHistoryRepository>();
+builder.Services.AddScoped<IUserRepository,              UserRepository>();
+builder.Services.AddScoped<IUserHistoryRepository,       UserHistoryRepository>();
 builder.Services.AddScoped<IUserSocialAccountRepository, UserSocialAccountRepository>();
 builder.Services.AddScoped<IEmailVerificationRepository, EmailVerificationRepository>();
 
-builder.Services.AddScoped<IAuthService, AuthService>();
-builder.Services.AddScoped<IUserService, UserService>();
-builder.Services.AddScoped<IEmailService, EmailService>();
+builder.Services.AddScoped<IAuthService,              AuthService>();
+builder.Services.AddScoped<IUserService,              UserService>();
+builder.Services.AddScoped<IEmailService,             EmailService>();
 builder.Services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 
-builder.Services.AddHttpClient<IKakaoAuthService,KakaoAuthService>();
-builder.Services.AddHttpClient<INaverAuthService, NaverAuthService>();
+builder.Services.AddHttpClient<IKakaoAuthService,  KakaoAuthService>();
+builder.Services.AddHttpClient<INaverAuthService,  NaverAuthService>();
 builder.Services.AddHttpClient<IGoogleAuthService, GoogleAuthService>();
 
 builder.Services.AddHttpClient<ITMDBMoviesService, TMDBMoviesService>();
-builder.Services.AddHttpClient<ITMDBTvService, TMDBTvService>();
+builder.Services.AddHttpClient<ITMDBTvService,     TMDBTvService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

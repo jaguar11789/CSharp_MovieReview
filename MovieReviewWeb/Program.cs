@@ -27,11 +27,7 @@ app.MapFallback(async context =>
     }
     // /movies ¡æ wwwroot/movies/index.html
     var directoryIndexPath =
-        Path.Combine(
-            app.Environment.WebRootPath,
-            path,
-            "index.html"
-        );
+        Path.Combine(app.Environment.WebRootPath, path, "index.html");
     if (File.Exists(directoryIndexPath))
     {
         context.Response.ContentType = "text/html; charset=utf-8";
