@@ -1,13 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using MovieReviewApi.Models.Accounts.User;
+using MovieReviewApi.Models.Reviews;
 
 namespace MovieReviewApi.Data
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
-        public DbSet<UserEntity> Users { get; set; }
-        public DbSet<UserHistoryEntity> UserHistories { get; set; }
+        public DbSet<UserEntity>              Users              { get; set; }
+        public DbSet<UserHistoryEntity>       UserHistories      { get; set; }
         public DbSet<UserSocialAccountEntity> UserSocialAccounts { get; set; }
+
+        public DbSet<ReviewsEntity>       Reviews          { get; set; }
+        public DbSet<ReviewHistoryEntity> ReviewsHistories { get; set; }
+
         public DbSet<EmailVerificationEntity> EmailVerifications { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -17,6 +22,10 @@ namespace MovieReviewApi.Data
             modelBuilder.Entity<UserEntity>().ToTable("TUsers");
             modelBuilder.Entity<UserHistoryEntity>().ToTable("TUserHistory");
             modelBuilder.Entity<UserSocialAccountEntity>().ToTable("TUserSocialAccounts");
+
+            modelBuilder.Entity<ReviewsEntity>().ToTable("TReviews");
+            modelBuilder.Entity<ReviewHistoryEntity>().ToTable("TReviewHistory");
+
             modelBuilder.Entity<EmailVerificationEntity>(entity =>
             {
                 entity.ToTable("TEmailVerifications");
@@ -39,6 +48,11 @@ namespace MovieReviewApi.Data
                 .HasForeignKey(x => x.UserId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+            modelBuilder.Entity<ReviewHistoryEntity>()
+                .HasOne(h => h.Reviews)
+                .WithMany(r => r.ReviewHistories)
+                .HasForeignKey(x => x.ReviewId)
+                .OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

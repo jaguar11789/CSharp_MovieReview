@@ -22,7 +22,7 @@
 
         public bool      EmailVerified { get; set; }
 
-        public ICollection<UserHistoryEntity> UserHistories { get; set; } = new List<UserHistoryEntity>();
-        public ICollection<UserSocialAccountEntity> UserSocialAccounts { get; set; } = new List<UserSocialAccountEntity>();
+        public ICollection<UserHistoryEntity>       UserHistories      { get; set; } = [];
+        public ICollection<UserSocialAccountEntity> UserSocialAccounts { get; set; } = [];
     }
 }

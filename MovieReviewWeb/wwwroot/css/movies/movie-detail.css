@@ -344,3 +344,32 @@
     border-color: rgba(255, 255, 255, 0.5);
     transform: translateY(-2px);
 }
+
+/* ========================================
+   리뷰 버튼
+======================================== */
+.movie-detail-actions {
+    margin-top: 28px;
+}
+
+.movie-review-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 130px;
+    min-height: 46px;
+    padding: 12px 22px;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    background: #ffffff;
+    color: #111111;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.movie-review-button:hover {
+    background: #e6e6e6;
+    transform: translateY(-2px);
+}

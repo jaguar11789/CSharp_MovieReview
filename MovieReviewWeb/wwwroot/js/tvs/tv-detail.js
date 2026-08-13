@@ -53,6 +53,9 @@ document.addEventListener("DOMContentLoaded", async () => {
                                         <strong>${creators}</strong>
                                     </div>
                                     <p class="movie-detail-overview">${tv.overview || "등록된 TV 프로그램 소개가 없습니다."}</p>
+                                    <div class="movie-detail-actions">
+                                        <button type="button" class="movie-review-button" onclick="goToTvReview(${tv.id})">★ 리뷰 보기</button>
+                                    </div>
                                 </div>
                             </div>
                              `;

@@ -56,6 +56,9 @@
                                             <strong> ${director?.name || "감독 정보 없음"} </strong>
                                         </div>
                                         <p class="movie-detail-overview">${movie.overview || "등록된 영화 소개가 없습니다."}</p>
+                                        <div class="movie-detail-actions">
+                                            <button type="button" class="movie-review-button" onclick="goToMovieReview(${movie.id})">★ 리뷰 보기</button>
+                                        </div>
                                     </div>
                                 </div>
                             `;
@@ -104,4 +107,9 @@ function renderCast(cast, showAll = false) {
     moreButton.onclick = () => {
         renderCast(cast, !showAll);
     };
+}
+
+function goToMovieReview(movieId)
+{
+    window.location.href = `/movies/review?id=${movieId}`;
 }

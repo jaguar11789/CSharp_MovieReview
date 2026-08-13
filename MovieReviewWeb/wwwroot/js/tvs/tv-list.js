@@ -281,6 +281,7 @@ function renderPagination(pageData, loadPage) {
     }
 }
 
-function goToTv(tvId) {
+function goToTv(tvId)
+{
     window.location.href = `/tvs/detail?id=${tvId}`;
 }

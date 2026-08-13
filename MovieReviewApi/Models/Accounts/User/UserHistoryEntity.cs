@@ -9,6 +9,6 @@
         public string?  Memo       { get; set; }
         public DateTime ChangedAt  { get; set; }
 
-        public UserEntity     User       { get; set; } = null!;
+        public UserEntity User { get; set; } = null!;
     }
 }
