@@ -3,11 +3,13 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MovieReviewApi.Data;
+using MovieReviewApi.Repositories.Reviews;
 using MovieReviewApi.Repositories.User;
 using MovieReviewApi.Services.Accounts.Email;
 using MovieReviewApi.Services.Accounts.User;
 using MovieReviewApi.Services.Auth;
 using MovieReviewApi.Services.Movies;
+using MovieReviewApi.Services.Reviews;
 using MovieReviewApi.Services.Social;
 using MovieReviewApi.Services.TV;
 using System.Text;
@@ -63,15 +65,21 @@ builder.Services.AddSession(options =>
 });
 
 // builder.Services.AddScoped<UserRepository>();
+// Repository
 builder.Services.AddScoped<IUserRepository,              UserRepository>();
 builder.Services.AddScoped<IUserHistoryRepository,       UserHistoryRepository>();
 builder.Services.AddScoped<IUserSocialAccountRepository, UserSocialAccountRepository>();
 builder.Services.AddScoped<IEmailVerificationRepository, EmailVerificationRepository>();
+builder.Services.AddScoped<IReviewsRepository,           ReviewsRepository>();
 
+builder.Services.AddScoped<IReviewHistoryRepository,     ReviewHistoryRepository>();
+
+// Service
 builder.Services.AddScoped<IAuthService,              AuthService>();
 builder.Services.AddScoped<IUserService,              UserService>();
 builder.Services.AddScoped<IEmailService,             EmailService>();
 builder.Services.AddScoped<IEmailVerificationService, EmailVerificationService>();
+builder.Services.AddScoped<IReviewService,            ReviewService>();
 
 builder.Services.AddHttpClient<IKakaoAuthService,  KakaoAuthService>();
 builder.Services.AddHttpClient<INaverAuthService,  NaverAuthService>();

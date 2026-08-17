@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>영화 리뷰</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/css/movies/movie-review.css">
+</head>
+<body>
+    <div id="menu"></div>
+    <main class="movie-review-page">
+        <div id="reviewMovieInfo" class="review-movie-info">
+            <!-- JS에서 영화 정보 출력 -->
+        </div>
+        <div class="review-header">
+            <span class="section-label">REVIEW</span>
+            <h1>영화 리뷰</h1>
+        </div>
+
+        <!-- 리뷰 작성 -->
+        <section class="review-write-section">
+            <h2>리뷰 작성</h2>
+
+            <div class="review-rating">
+                <label for="reviewRating">별점</label>
+                <select id="reviewRating">
+                    <option value="5">★★★★★</option>
+                    <option value="4">★★★★☆</option>
+                    <option value="3">★★★☆☆</option>
+                    <option value="2">★★☆☆☆</option>
+                    <option value="1">★☆☆☆☆</option>
+                </select>
+            </div>
+
+            <textarea id="reviewContent" placeholder="영화에 대한 리뷰를 작성해주세요."></textarea>
+
+            <button type="button" id="reviewSubmitButton">리뷰 등록</button>
+        </section>
+
+        <!-- 리뷰 목록 -->
+        <section class="review-section">
+
+            <div class="section-title">
+                <div>
+                    <span class="section-label">REVIEWS</span>
+                    <h2>리뷰 목록</h2>
+                </div>
+            </div>
+
+            <div id="review-list" class="review-list">
+            </div>
+
+        </section>
+
+    </main>
+    <div id="footer"></div>
+    <script src="/js/movies/movie-review.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/common.js"></script>
+</body>
+</html>

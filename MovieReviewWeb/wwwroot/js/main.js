@@ -105,7 +105,7 @@ container.innerHTML = `
 
 function goToMovieReview(movieId)
 {
-    window.location.href = `/movies/reviews?movieId=${movieId}`;
+    window.location.href = `/movies/review?movieId=${movieId}`;
 }
 
 function renderPopularMovies(container, movies)

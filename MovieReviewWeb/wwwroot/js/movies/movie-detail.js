@@ -111,5 +111,6 @@ function renderCast(cast, showAll = false) {
 
 function goToMovieReview(movieId)
 {
+    console.log("리뷰 이동 movieId:", movieId);
     window.location.href = `/movies/review?id=${movieId}`;
 }
