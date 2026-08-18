@@ -31,6 +31,11 @@ namespace MovieReviewApi.Repositories.Reviews
             return await query.ToListAsync();                           
         }
         
+        public async Task<ReviewsEntity?> GetByIdAsync(long reviewId)
+        {
+            return await _context.Reviews.FirstOrDefaultAsync(x => x.Id == reviewId);
+        }
+
         public void Add(ReviewsEntity review)
         {
             _context.Reviews.Add(review);

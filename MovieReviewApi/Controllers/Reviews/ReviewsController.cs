@@ -39,5 +39,39 @@ namespace MovieReviewApi.Controllers.Reviews
 
             return Ok(result);
         }
+
+        // 리뷰 수정
+        [Authorize]
+        [HttpPut("{reviewId}")]
+        public async Task<IActionResult> UpdateReview(long reviewId, ReviewRequest reviewRequest)
+        {
+            var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (!long.TryParse(userIdValue, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            var result = await _reviewService.UpdateReviewAsync(userId, reviewId, reviewRequest);
+
+            return Ok(result);
+        }
+
+        // 리뷰 삭제
+        [Authorize]
+        [HttpDelete("{reviewId}")]
+        public async Task<IActionResult> DeleteReview(long reviewId)
+        {
+            var userIdValue = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            if (!long.TryParse(userIdValue, out var userId))
+            {
+                return Unauthorized();
+            }
+
+            var result = await _reviewService.DeleteReviewAsync(userId, reviewId);
+
+            return Ok(result);
+        }
     }
 }

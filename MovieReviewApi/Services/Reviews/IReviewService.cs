@@ -9,5 +9,9 @@ namespace MovieReviewApi.Services.Reviews
         Task<List<ReviewResponse>> GetReviewsAsync(long movieId, string sort = "latest");
 
         Task<ResultResponse> CreateReviewAsync(long userId, CreateReviewRequest createReviewRequest);
+
+        Task<ResultResponse> UpdateReviewAsync(long userId, long reviewId, ReviewRequest reviewRequest);
+
+        Task<ResultResponse> DeleteReviewAsync(long userId, long reviewId);
     }
 }
