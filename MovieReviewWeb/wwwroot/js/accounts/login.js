@@ -24,9 +24,9 @@ loginForm.addEventListener('submit', async (event) => {
     try {
         const response = await fetch(`https://localhost:7226/api/Auth/login`,
             {
-                method: "POST",
+                method     : "POST",
                 credentials: "include",
-                headers: {
+                headers    : {
                     "Content-Type": "application/json"
                 },
                 body: JSON.stringify(requestDate)
