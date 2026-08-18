@@ -15,6 +15,14 @@ namespace MovieReviewApi.Controllers.Reviews
         private readonly IUserService   _userService   = userService;
         private readonly IReviewService _reviewService = reviewService;
 
+        [HttpGet("movie/{movieId}")]
+        public async Task<IActionResult> GetReviews(long movieId, string sort = "latest")
+        {
+            var reviews = await _reviewService.GetReviewsAsync(movieId, sort);
+
+            return Ok(reviews);
+        }
+
         // 리뷰 등록
         [Authorize]
         [HttpPost("review")]

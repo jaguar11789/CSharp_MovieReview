@@ -12,6 +12,10 @@ namespace MovieReviewApi.Services.Reviews
         private readonly IReviewsRepository       _reviewRepository        = reviewsRepository;
         private readonly IReviewHistoryRepository _reviewHistoryRepository = reviewHistoryRepository;
 
+        public async Task<List<ReviewResponse>> GetReviewsAsync(long movieId, string sort = "latest")
+        {
+            return await _reviewRepository.GetByMovieIdAsync(movieId, sort);
+        }
 
         public async Task<ResultResponse> CreateReviewAsync(long userId, CreateReviewRequest createReviewRequest)
         {

@@ -14,7 +14,33 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         return;
     }
+    // 정렬 버튼 이벤트
+    const latestSortButton = document.getElementById("latestSortButton");
+    const ratingSortButton = document.getElementById("ratingSortButton");
 
+    latestSortButton.addEventListener("click", async () => {
+
+        setReviewSortActive("latest");
+
+        await loadReviews(movieId, "latest");
+    });
+
+    ratingSortButton.addEventListener("click", async () => {
+
+        setReviewSortActive("rating");
+
+        await loadReviews(movieId, "rating");
+    });
+
+    // 영화 정보
+    await loadMovie(movieId);
+
+    // 기본 정렬 : 최신순
+    await loadReviews(movieId, "latest");
+});
+
+async function loadMovie(movieId)
+{
     try
     {
         const response = await fetch(`${API_BASE_URL}/api/Movies/${movieId}`);
@@ -71,7 +97,92 @@ document.addEventListener("DOMContentLoaded", async () => {
     {
         console.error("영화 상세 정보 요청 오류 : ", error);
     }
-});
+}
+
+async function loadReviews(movieId, sort = "latest")
+{
+    try
+    {
+        const response = await fetch(`${API_BASE_URL}/api/Reviews/movie/${movieId}?sort=${sort}`);
+
+        if (!response.ok)
+        {
+            throw new Error(`리뷰 목록 요청 실패 : ${response.status}`);
+        }
+
+        const reviews = await response.json();
+
+        console.log("리뷰 목록 : ", reviews);
+
+        renderReviews(reviews);
+    }
+    catch (error)
+    {
+        console.error("리뷰 목록 조회 오류:", error);
+    }
+}
+
+function renderReviews(reviews)
+{
+    const reviewList = document.getElementById("review-list");
+
+    if (!reviews || reviews.length === 0)
+    {
+        reviewList.innerHTML = `<div class="review-empty">
+                                    아직 등록된 리뷰가 없습니다.
+                                </div>
+        `;
+        return;
+    }
+    reviewList.innerHTML = reviews.map(review => {
+        const rating = Number(review.rating);
+
+        return `
+                <article class="review-item">
+                    <div class="review-header">
+                        <div class="review-user">
+                            <strong>${formatUserId(review.userId)}</strong>
+                        </div>
+                        <div class="review-rating">
+                            ${"★".repeat(rating)}
+                            ${"☆".repeat(5 - rating)}
+                        </div>
+                    </div>
+                    <p class="review-content">${review.content}</p>
+                    <div class="review-footer">
+                        <span>${formatReviewDate(review.createdAt)}</span>
+                    </div>
+                </article>
+            `;
+    }).join("");
+}
+
+function setReviewSortActive(sort)
+{
+    const latestButton = document.getElementById("latestSortButton");
+    const ratingButton = document.getElementById("ratingSortButton");
+
+    latestButton.classList.toggle("active", sort === "latest");
+    ratingButton.classList.toggle("active", sort === "rating");
+}
+
+function formatUserId(userId)
+{
+    if (!userId)
+    {
+        return "";
+    }
+    return userId.length > 3 ? `${userId.substring(0, 3)}...` : userId;
+}
+
+function formatReviewDate(date)
+{
+    if (!date)
+    {
+        return "";
+    }
+    return new Date(date).toLocaleDateString("ko-KR");
+}
 
 async function createReview(movieId)
 {

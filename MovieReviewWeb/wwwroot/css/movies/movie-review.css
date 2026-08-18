@@ -536,3 +536,33 @@ body {
     color: #999999;
     font-size: 11px;
 }
+
+/* ========================================
+   리뷰 평점순, 최신순
+======================================== */
+.review-sort {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 20px;
+}
+
+.review-sort-button {
+    border: none;
+    background: transparent;
+    padding: 6px 8px;
+    color: #666;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.review-sort-button.active {
+    color: #111;
+    font-weight: 700;
+}
+
+.review-sort-button:hover {
+    color: #111;
+}
