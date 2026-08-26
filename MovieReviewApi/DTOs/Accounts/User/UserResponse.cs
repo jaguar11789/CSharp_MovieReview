@@ -19,5 +19,7 @@
         public DateTime  UpdatedAt     { get; set; }
         public string?   Provider      { get; set; }
         public bool      EmailVerified { get; set; }
+
+        public string    Role          { get; set; } = string.Empty;
     }
 }

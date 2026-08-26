@@ -3,10 +3,12 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using MovieReviewApi.Data;
+using MovieReviewApi.Repositories.Admin;
 using MovieReviewApi.Repositories.Reviews;
 using MovieReviewApi.Repositories.User;
 using MovieReviewApi.Services.Accounts.Email;
 using MovieReviewApi.Services.Accounts.User;
+using MovieReviewApi.Services.Admin;
 using MovieReviewApi.Services.Auth;
 using MovieReviewApi.Services.Movies;
 using MovieReviewApi.Services.Reviews;
@@ -74,6 +76,9 @@ builder.Services.AddScoped<IReviewsRepository,           ReviewsRepository>();
 
 builder.Services.AddScoped<IReviewHistoryRepository,     ReviewHistoryRepository>();
 
+// AdminRepository
+builder.Services.AddScoped<IAdminUserRepository,         AdminUserRepository>();
+
 // Service
 builder.Services.AddScoped<IAuthService,              AuthService>();
 builder.Services.AddScoped<IUserService,              UserService>();
@@ -81,12 +86,15 @@ builder.Services.AddScoped<IEmailService,             EmailService>();
 builder.Services.AddScoped<IEmailVerificationService, EmailVerificationService>();
 builder.Services.AddScoped<IReviewService,            ReviewService>();
 
-builder.Services.AddHttpClient<IKakaoAuthService,  KakaoAuthService>();
-builder.Services.AddHttpClient<INaverAuthService,  NaverAuthService>();
-builder.Services.AddHttpClient<IGoogleAuthService, GoogleAuthService>();
+builder.Services.AddHttpClient<IKakaoAuthService,     KakaoAuthService>();
+builder.Services.AddHttpClient<INaverAuthService,     NaverAuthService>();
+builder.Services.AddHttpClient<IGoogleAuthService,    GoogleAuthService>();
 
-builder.Services.AddHttpClient<ITMDBMoviesService, TMDBMoviesService>();
-builder.Services.AddHttpClient<ITMDBTvService,     TMDBTvService>();
+builder.Services.AddHttpClient<ITMDBMoviesService,    TMDBMoviesService>();
+builder.Services.AddHttpClient<ITMDBTvService,        TMDBTvService>();
+
+// AdminService
+builder.Services.AddScoped<IAdminUserService,     AdminUserService>();
 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

@@ -133,7 +133,8 @@ namespace MovieReviewApi.Services.Auth
                     BaseAddress   = user.BaseAddress,
                     DetailAddress = user.DetailAddress,
 
-                    CreatedAt     = user.CreatedAt
+                    CreatedAt     = user.CreatedAt,
+                    Role          = user.Role
                 }
             };
         }
