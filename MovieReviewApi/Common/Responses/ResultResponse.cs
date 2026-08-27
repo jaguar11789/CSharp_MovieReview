@@ -3,6 +3,7 @@
     public class ResultResponse
     {
         public int    retVal { get; set; }
-        public string retMsg { get; set; }
+        public string retMsg { get; set; } = string.Empty;
+        //public T?     data   { get; set; }
     }
 }

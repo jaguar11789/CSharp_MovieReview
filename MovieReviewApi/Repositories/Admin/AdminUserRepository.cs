@@ -49,5 +49,10 @@ namespace MovieReviewApi.Repositories.Admin
             return await _context.Users.Include(x => x.UserHistories)
                                        .FirstOrDefaultAsync(x => x.Id == id);
         }
+
+        public async Task SaveChangesAsync()
+        {
+            await _context.SaveChangesAsync();
+        }
     }
 }

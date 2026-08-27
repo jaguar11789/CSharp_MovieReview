@@ -107,18 +107,47 @@ namespace MovieReviewApi.Services.Auth
 
             if (user == null || string.IsNullOrEmpty(user.PasswordHash))
             {
-                return null;
+                return new LoginResponse
+                {
+                    RetVal = 400,
+                    RetMsg = "아이디 또는 비밀번호가 올바르지 않습니다."
+                };
             }
 
             var result = _passwordHasher.VerifyHashedPassword(user, user.PasswordHash, request.Password);
 
             if (result == PasswordVerificationResult.Failed)
             {
-                return null;
+                return new LoginResponse
+                {
+                    RetVal = 400,
+                    RetMsg = "아이디 또는 비밀번호가 올바르지 않습니다."
+                };
             }
+
+            if (user.StatusCode != 100)
+            {
+                return new LoginResponse
+                {
+                    RetVal = user.StatusCode,
+                    RetMsg = user.StatusCode switch
+                    {
+                        200 => "휴면 회원입니다.",
+                        990 => "정지된 회원입니다.",
+                        999 => "탈퇴한 회원입니다.",
+                        900 => "사용할 수 없는 회원입니다.",
+                        _   => "로그인할 수 없는 회원입니다."
+                    }
+                };
+            }
+
             return new LoginResponse
             {
+                RetVal = 0,
+                RetMsg = "로그인 되었습니다.",
+
                 Token = CreateToken(user),
+
                 User  = new UserResponse
                 {
                     Id            = user.Id,

@@ -148,7 +148,7 @@ namespace MovieReviewApi.Services.Accounts.User
                 var history = new UserHistoryEntity
                 {
                     User       = user,
-                    ActionCode = 300, // 비밀번호 변경
+                    ActionCode = 200, // 회원 정보 수정
                     StatusCode = user.StatusCode,
                     ChangedAt  = DateTime.Now,
                     Memo       = "비밀번호 변경"

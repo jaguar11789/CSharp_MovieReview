@@ -1,0 +1,267 @@
+﻿/* =========================================
+   회원 상세 페이지
+========================================= */
+
+.admin-hero {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.admin-hero-actions {
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   회원 요약
+========================================= */
+
+.admin-user-summary {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding: 28px 30px;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-user-profile {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+}
+
+.admin-user-avatar {
+    width: 64px;
+    height: 64px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #212529;
+    color: #ffffff;
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.admin-user-summary-info h2 {
+    margin: 0;
+    color: #212529;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.admin-user-name-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.admin-user-account {
+    margin: 5px 0 2px;
+    color: #495057;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.admin-user-email {
+    margin: 0;
+    color: #868e96;
+    font-size: 13px;
+}
+
+.admin-user-summary-status {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 7px;
+}
+
+.summary-label {
+    color: #adb5bd;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+}
+
+
+/* =========================================
+   상세 카드
+========================================= */
+
+.admin-detail-card {
+    margin-bottom: 24px;
+    background: #ffffff;
+    border: 1px solid #e9ecef;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.admin-detail-card-header {
+    padding: 22px 26px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+.admin-detail-card-header h2 {
+    margin: 3px 0 0;
+    color: #212529;
+    font-size: 18px;
+    font-weight: 700;
+}
+
+.admin-detail-card-header p {
+    margin: 7px 0 0;
+    color: #868e96;
+    font-size: 13px;
+}
+
+
+/* =========================================
+   정보 Grid
+========================================= */
+
+.admin-detail-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.admin-detail-item {
+    min-height: 82px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 16px 26px;
+    border-bottom: 1px solid #f1f3f5;
+}
+
+    .admin-detail-item:nth-child(odd) {
+        border-right: 1px solid #f1f3f5;
+    }
+
+.detail-label {
+    margin-bottom: 7px;
+    color: #adb5bd;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.admin-detail-item strong {
+    color: #343a40;
+    font-size: 14px;
+    font-weight: 500;
+    word-break: break-word;
+}
+
+
+/* =========================================
+   주소
+========================================= */
+
+.admin-address-list {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+}
+
+.admin-detail-item-wide {
+    grid-column: span 1;
+}
+
+.admin-address-list .admin-detail-item:nth-child(2),
+.admin-address-list .admin-detail-item:nth-child(3) {
+    border-right: none;
+}
+
+
+/* =========================================
+   활동 이력
+========================================= */
+
+.admin-history-wrapper {
+    width: 100%;
+    overflow-x: auto;
+}
+
+.admin-history-table {
+    margin: 0;
+}
+
+.admin-history-table thead th {
+    padding: 14px 20px;
+    background: #f8f9fa;
+    border-bottom: 1px solid #dee2e6;
+    color: #6c757d;
+    font-size: 12px;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.admin-history-table tbody td {
+    padding: 16px 20px;
+    border-bottom: 1px solid #f1f3f5;
+    color: #495057;
+    font-size: 13px;
+    vertical-align: middle;
+}
+
+.admin-history-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+/* =========================================
+   반응형
+========================================= */
+
+@media (max-width: 768px) {
+
+    .admin-user-summary {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+    }
+
+    .admin-user-summary-status {
+        align-items: flex-start;
+    }
+
+    .admin-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-detail-item:nth-child(odd) {
+        border-right: none;
+    }
+
+    .admin-address-list {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* 이메일 인증 여부 */
+.user-email-verified {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 76px;
+    height: 28px;
+    padding: 0 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.user-email-verified.verified {
+    background: #e7f5e9;
+    color: #2b8a3e;
+}
+
+.user-email-verified.unverified {
+    background: #f1f3f5;
+    color: #868e96;
+}

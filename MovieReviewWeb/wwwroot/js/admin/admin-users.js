@@ -137,8 +137,12 @@ function renderUsers(users)
     userList.innerHTML = users.map(user => `
                                             <tr>
                                                 <td class="user-id">${user.id}</td>
-                                                <td class="user-account">${user.userId}</td>
-                                                <td class="user-email">${user.email}</td>
+                                                <td class="user-account">
+                                                    <a href="/admin/users/detail?id=${user.id}" class="user-detail-link user-account-link">${user.userId}</a>
+                                                </td>
+                                                <td class="user-email">
+                                                    <a href="/admin/users/detail?id=${user.id}" class="user-detail-link">${user.email}</a>
+                                                </td>
                                                 <td>
                                                     <span class="user-role ${getRoleClass(user.role)}">
                                                         ${formatRole(user.role)}

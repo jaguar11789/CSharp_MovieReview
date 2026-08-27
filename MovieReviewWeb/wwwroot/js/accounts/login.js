@@ -48,7 +48,7 @@ loginForm.addEventListener('submit', async (event) => {
         }
         console.log("로그인 성공:", result);
 
-        alert("로그인 되었습니다.");
+        alert(`${result.retMsg}`);
 
         const params    = new URLSearchParams(location.search);
         const returnUrl = params.get("returnUrl");

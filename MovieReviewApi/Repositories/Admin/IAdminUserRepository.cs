@@ -7,5 +7,7 @@ namespace MovieReviewApi.Repositories.Admin
         Task<(List<UserEntity> Users, int TotalCount)> GetAllAsync(int page, int pageSize, string? keyword, int? statusCode, int? joinDays);
 
         Task<UserEntity?> GetByIdAsync(long id);
+
+        Task SaveChangesAsync();
     }
 }

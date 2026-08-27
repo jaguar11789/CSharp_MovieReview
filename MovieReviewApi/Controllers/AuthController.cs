@@ -42,13 +42,10 @@ namespace MovieReviewApi.Controllers
         public async Task<IActionResult> Login(LoginRequest request)
         {
             var result = await _authService.LoginAsync(request);
-            if (result == null)
+
+            if (result == null || result.RetVal != 0)
             {
-                return Unauthorized(new ResultResponse
-                {
-                    retVal = 900,
-                    retMsg = "아이디 또는 비밀번호가 올바르지 않습니다."
-                });
+                return BadRequest(result);
             }
 
             Response.Cookies.Append("accessToken", result.Token,
